@@ -40,10 +40,10 @@ const Login = () => {
      * - loading: 控制登录按钮的加载状态，防止重复提交
      */
     const [loading, setLoading] = useState(false)
-    
+
     // 使用 useNavigate Hook 获取导航函数
     const navigate = useNavigate()
-    
+
     // 使用 useAuth Hook 获取认证上下文的方法
     const { login } = useAuth()
 
@@ -63,29 +63,29 @@ const Login = () => {
     const onFinish = async (values) => {
         // 设置加载状态，显示加载动画并禁用按钮
         setLoading(true)
-        
+
         try {
             // 调用登录 API，传入表单值
             // loginApi 是一个异步函数，返回包含 token 和用户信息的对象
             const data = await loginApi(values)
-            
+
             /**
              * 登录成功后的处理：
              * 1. 将 token 和用户信息保存到认证上下文
              * 2. 认证上下文会自动更新状态并触发相关组件重新渲染
              */
             login(data.token, data.user)
-            
+
             // 显示成功消息
             message.success('登录成功')
-            
+
             /**
              * 使用 navigate 函数进行编程式导航
              * 参数 '/' 表示跳转到根路径（仪表盘页面）
              * 这会触发 React Router 的页面跳转
              */
             navigate('/')
-            
+
         } catch (error) {
             /**
              * 登录失败处理
@@ -98,7 +98,7 @@ const Login = () => {
              */
             console.error('登录失败:', error)
             // 注意：这里没有显示错误消息，因为错误拦截器已经在 request.js 中处理了
-            
+
         } finally {
             // 无论成功或失败，都要清除加载状态
             setLoading(false)
@@ -157,7 +157,7 @@ const Login = () => {
                 <Form
                     name="login"
                     // 演示用的初始值，生产环境中应该删除
-                    initialValues={{ username: 'admin', password: 'admin123' }}
+                    initialValues={{ username: 'admin', password: '123456' }}
                     onFinish={onFinish}
                     autoComplete="off"
                     size="large"
@@ -185,9 +185,9 @@ const Login = () => {
                          * - prefix: 输入框前缀图标
                          * - placeholder: 占位符文本
                          */}
-                        <Input 
-                            prefix={<UserOutlined />} 
-                            placeholder="用户名" 
+                        <Input
+                            prefix={<UserOutlined />}
+                            placeholder="用户名"
                         />
                     </Form.Item>
 
@@ -201,9 +201,9 @@ const Login = () => {
                         name="password"
                         rules={[{ required: true, message: '请输入密码' }]}
                     >
-                        <Input.Password 
-                            prefix={<LockOutlined />} 
-                            placeholder="密码" 
+                        <Input.Password
+                            prefix={<LockOutlined />}
+                            placeholder="密码"
                         />
                     </Form.Item>
 
@@ -219,10 +219,10 @@ const Login = () => {
                      * - loading: 加载状态
                      */}
                     <Form.Item>
-                        <Button 
-                            type="primary" 
-                            htmlType="submit" 
-                            block 
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            block
                             loading={loading}
                         >
                             登录
@@ -237,7 +237,7 @@ const Login = () => {
                  * 仅用于演示，生产环境中应该删除
                  */}
                 <div style={{ textAlign: 'center', color: '#999', fontSize: 12 }}>
-                    默认账号：admin / admin123
+                    默认账号：admin / 123456
                 </div>
             </Card>
         </div>
