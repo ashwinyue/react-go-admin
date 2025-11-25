@@ -2,10 +2,10 @@ package api
 
 import (
 	"net/http"
-	"react-mng2-backend/services"
-	"react-mng2-backend/utils"
 
 	"github.com/gin-gonic/gin"
+	"react-go-admin-backend/services"
+	"react-go-admin-backend/utils"
 )
 
 // AuthController 认证控制器

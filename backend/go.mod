@@ -1,4 +1,4 @@
-module react-mng2-backend
+module react-go-admin-backend
 
 go 1.21
 

@@ -2,12 +2,12 @@ package api
 
 import (
 	"net/http"
-	"react-mng2-backend/models"
-	"react-mng2-backend/services"
-	"react-mng2-backend/utils"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"react-go-admin-backend/models"
+	"react-go-admin-backend/services"
+	"react-go-admin-backend/utils"
 )
 
 // UserController 用户控制器

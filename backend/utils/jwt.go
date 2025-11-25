@@ -2,10 +2,10 @@ package utils
 
 import (
 	"errors"
-	"react-mng2-backend/config"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
+	"react-go-admin-backend/config"
 )
 
 // Claims JWT 声明

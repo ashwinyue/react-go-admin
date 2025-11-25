@@ -2,10 +2,10 @@ package middleware
 
 import (
 	"net/http"
-	"react-mng2-backend/utils"
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"react-go-admin-backend/utils"
 )
 
 // AuthMiddleware JWT 认证中间件

@@ -2,7 +2,7 @@ package services
 
 import (
 	"errors"
-	"react-mng2-backend/models"
+	"react-go-admin-backend/models"
 )
 
 // RoleService 角色服务

@@ -2,7 +2,7 @@ package services
 
 import (
 	"errors"
-	"react-mng2-backend/models"
+	"react-go-admin-backend/models"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"

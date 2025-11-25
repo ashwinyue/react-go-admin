@@ -1,9 +1,8 @@
 package api
 
 import (
-	"react-mng2-backend/middleware"
-
 	"github.com/gin-gonic/gin"
+	"react-go-admin-backend/middleware"
 )
 
 // RegisterRoutes 注册路由

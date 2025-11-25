@@ -26,7 +26,7 @@
 ### 前端依赖安装
 ```bash
 # 进入项目目录
-cd /Users/solariswu/WebstormProjects/react-mng2
+cd /Users/solariswu/WebstormProjects/react-go-admin
 
 # 安装前端依赖
 npm install
@@ -111,10 +111,10 @@ npm run build
 cd backend
 
 # 构建二进制文件
-go build -o react-mng2-backend
+go build -o react-go-admin-backend
 
 # 运行二进制文件
-./react-mng2-backend
+./react-go-admin-backend
 ```
 
 ## 验证方法

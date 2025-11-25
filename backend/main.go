@@ -1,13 +1,12 @@
 package main
 
 import (
-	"log"
-	"react-mng2-backend/api"
-	"react-mng2-backend/config"
-	"react-mng2-backend/models"
-
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"log"
+	"react-go-admin-backend/api"
+	"react-go-admin-backend/config"
+	"react-go-admin-backend/models"
 )
 
 func main() {

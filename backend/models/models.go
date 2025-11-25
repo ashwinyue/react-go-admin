@@ -2,12 +2,12 @@ package models
 
 import (
 	"log"
-	"react-mng2-backend/config"
 	"time"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"react-go-admin-backend/config"
 )
 
 var DB *gorm.DB
@@ -22,9 +22,9 @@ type User struct {
 	Status    int       `gorm:"default:1" json:"status"` // 1:正常 0:禁用
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
-	
+
 	// 关联关系
-	Role *Role `gorm:"foreignKey:RoleID" json:"role,omitempty"`
+	Role   *Role `gorm:"foreignKey:RoleID" json:"role,omitempty"`
 	RoleID *uint `json:"role_id"`
 }
 
@@ -36,7 +36,7 @@ type Role struct {
 	Description string    `gorm:"size:255" json:"description"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
-	
+
 	// 关联关系
 	Permissions []Permission `gorm:"many2many:role_permissions" json:"permissions,omitempty"`
 }
@@ -53,7 +53,7 @@ type Permission struct {
 	Description string    `gorm:"size:255" json:"description"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
-	
+
 	// 关联关系
 	Roles []Role `gorm:"many2many:role_permissions" json:"roles,omitempty"`
 }
@@ -112,23 +112,23 @@ func initDefaultData() {
 		{Name: "用户管理", Code: "system:user", ParentCode: "system", Path: "/system/user", Type: 1, Sort: 1, Description: "用户管理"},
 		{Name: "角色管理", Code: "system:role", ParentCode: "system", Path: "/system/role", Type: 1, Sort: 2, Description: "角色管理"},
 		{Name: "权限管理", Code: "system:permission", ParentCode: "system", Path: "/system/permission", Type: 1, Sort: 3, Description: "权限管理"},
-		
+
 		// 用户管理功能权限
 		{Name: "用户查看", Code: "system:user:view", ParentCode: "system:user", Path: "", Type: 2, Sort: 1, Description: "查看用户列表"},
 		{Name: "用户新增", Code: "system:user:add", ParentCode: "system:user", Path: "", Type: 2, Sort: 2, Description: "新增用户"},
 		{Name: "用户编辑", Code: "system:user:edit", ParentCode: "system:user", Path: "", Type: 2, Sort: 3, Description: "编辑用户"},
 		{Name: "用户删除", Code: "system:user:delete", ParentCode: "system:user", Path: "", Type: 2, Sort: 4, Description: "删除用户"},
-		
+
 		// 角色管理功能权限
 		{Name: "角色查看", Code: "system:role:view", ParentCode: "system:role", Path: "", Type: 2, Sort: 1, Description: "查看角色列表"},
 		{Name: "角色新增", Code: "system:role:add", ParentCode: "system:role", Path: "", Type: 2, Sort: 2, Description: "新增角色"},
 		{Name: "角色编辑", Code: "system:role:edit", ParentCode: "system:role", Path: "", Type: 2, Sort: 3, Description: "编辑角色"},
 		{Name: "角色删除", Code: "system:role:delete", ParentCode: "system:role", Path: "", Type: 2, Sort: 4, Description: "删除角色"},
-		
+
 		// 权限管理功能权限
 		{Name: "权限查看", Code: "system:permission:view", ParentCode: "system:permission", Path: "", Type: 2, Sort: 1, Description: "查看权限列表"},
 		{Name: "权限分配", Code: "system:permission:assign", ParentCode: "system:permission", Path: "", Type: 2, Sort: 2, Description: "分配权限"},
-		
+
 		// 仪表盘
 		{Name: "仪表盘", Code: "dashboard", ParentCode: "", Path: "/dashboard", Type: 1, Sort: 0, Description: "仪表盘模块"},
 	}

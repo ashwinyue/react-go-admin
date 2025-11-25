@@ -27,6 +27,8 @@ import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
 import UserList from '../pages/user/UserList'
 import RoleList from '../pages/role/RoleList'
+import Settings from '../pages/Settings'
+import Profile from '../pages/Profile'
 import NotFound from '../pages/NotFound'
 
 const AppRouter = () => {
@@ -88,6 +90,14 @@ const AppRouter = () => {
                     <Route path="user" element={<UserList />} />
                     <Route path="role" element={<RoleList />} />
                 </Route>
+
+                {/* 
+                    系统设置页面
+                    - path="settings": 匹配 /settings 路径
+                    - element={<Settings />}: 渲染 Settings 组件
+                    - 包含基本设置、安全设置、邮件设置、通知设置、外观设置等
+                */}
+                <Route path="settings" element={<Settings />} />
 
             </Route>
 
