@@ -47,16 +47,7 @@ const PrivateRoute = ({ children }) => {
      */
     if (loading) {
         return (
-            <div
-                style={{
-                    // 使用 flexbox 布局居中显示加载指示器
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    // 设置容器高度为整个视口高度
-                    height: '100vh'
-                }}
-            >
+            <div className="flex justify-center items-center h-screen">
                 {/* Spin 组件：Ant Design 的加载指示器 */}
                 <Spin size="large" />
                 {/* size="large" 设置为大型加载指示器 */}
@@ -71,9 +62,9 @@ const PrivateRoute = ({ children }) => {
      * - 如果 isAuthenticated 为 true，渲染子组件
      * - 如果 isAuthenticated 为 false，重定向到登录页面
      */
-    return isAuthenticated ? 
+    return isAuthenticated ?
         // 已认证：渲染受保护的子组件
-        children : 
+        children :
         // 未认证：重定向到登录页面
         <Navigate to="/login" replace />
 }

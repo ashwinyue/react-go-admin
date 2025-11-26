@@ -273,7 +273,7 @@ const Settings = () => {
                     type="info"
                     showIcon
                     icon={<InfoCircleOutlined />}
-                    style={{ marginBottom: 24 }}
+                    className="mb-6"
                 />
 
                 <Title level={4}>密码策略</Title>
@@ -319,7 +319,7 @@ const Settings = () => {
                     label="会话超时时间（分钟）"
                     extra="用户无操作后自动登出的时间"
                 >
-                    <InputNumber min={5} max={120} style={{ width: '100%' }} />
+                    <InputNumber min={5} max={120} className="w-full" />
                 </Form.Item>
 
                 <Divider />
@@ -331,14 +331,14 @@ const Settings = () => {
                     label="最大登录尝试次数"
                     extra="超过此次数将锁定账户"
                 >
-                    <InputNumber min={3} max={10} style={{ width: '100%' }} />
+                    <InputNumber min={3} max={10} className="w-full" />
                 </Form.Item>
 
                 <Form.Item
                     name="lockoutDuration"
                     label="账户锁定时长（分钟）"
                 >
-                    <InputNumber min={5} max={60} style={{ width: '100%' }} />
+                    <InputNumber min={5} max={60} className="w-full" />
                 </Form.Item>
 
                 <Divider />
@@ -422,7 +422,7 @@ const Settings = () => {
                             label="端口"
                             rules={[{ required: true, message: '请输入端口' }]}
                         >
-                            <InputNumber min={1} max={65535} style={{ width: '100%' }} />
+                            <InputNumber min={1} max={65535} className="w-full" />
                         </Form.Item>
                     </Col>
                 </Row>
@@ -635,6 +635,14 @@ const Settings = () => {
                     </Radio.Group>
                 </Form.Item>
 
+                <Form.Item
+                    name="primaryColor"
+                    label="主题色"
+                    extra="选择系统的主题颜色"
+                >
+                    <ColorPicker showText />
+                </Form.Item>
+
                 <Divider />
 
                 <Title level={4}>布局设置</Title>
@@ -736,7 +744,7 @@ const Settings = () => {
      * 主渲染函数
      */
     return (
-        <div style={{ padding: '24px' }}>
+        <div>
             <Title level={2}>系统设置</Title>
             <Paragraph type="secondary">
                 管理系统的各项配置，包括基本信息、安全策略、邮件服务、通知规则和外观主题
@@ -747,7 +755,7 @@ const Settings = () => {
                 onChange={setActiveTab}
                 items={tabItems}
                 size="large"
-                style={{ marginTop: 24 }}
+                className="mt-6"
             />
         </div>
     )

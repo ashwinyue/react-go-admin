@@ -186,19 +186,19 @@ const Profile = () => {
             {/* 左侧：头像和基本信息 */}
             <Col xs={24} md={8}>
                 <Card>
-                    <div style={{ textAlign: 'center' }}>
+                    <div className="text-center">
                         <Avatar
                             size={120}
                             src={avatarUrl}
                             icon={<UserOutlined />}
-                            style={{ marginBottom: 16 }}
+                            className="mb-4"
                         />
                         <Title level={4}>{user?.realname || user?.username}</Title>
                         <Text type="secondary">{user?.email}</Text>
 
                         <Divider />
 
-                        <div style={{ marginBottom: 16 }}>
+                        <div className="mb-4">
                             <Input
                                 placeholder="输入头像 URL"
                                 value={avatarUrl}
@@ -232,7 +232,7 @@ const Profile = () => {
                         description="用户名不可修改，如需修改请联系管理员"
                         type="info"
                         showIcon
-                        style={{ marginBottom: 24 }}
+                        className="mb-6"
                     />
 
                     <Form
@@ -311,7 +311,7 @@ const Profile = () => {
                         description="为了您的账户安全，建议定期修改密码，密码长度至少 6 位，包含字母和数字"
                         type="warning"
                         showIcon
-                        style={{ marginBottom: 24 }}
+                        className="mb-6"
                     />
 
                     <Form
@@ -465,7 +465,7 @@ const Profile = () => {
                     description="如发现异常登录记录，请立即修改密码并联系管理员"
                     type="info"
                     showIcon
-                    style={{ marginBottom: 16 }}
+                    className="mb-4"
                 />
                 <Table
                     columns={columns}
@@ -517,7 +517,7 @@ const Profile = () => {
      * 主渲染函数
      */
     return (
-        <div style={{ padding: '24px' }}>
+        <div>
             <Title level={2}>个人中心</Title>
             <Paragraph type="secondary">
                 查看和管理您的个人信息、修改密码、查看登录记录
@@ -528,7 +528,7 @@ const Profile = () => {
                 onChange={setActiveTab}
                 items={tabItems}
                 size="large"
-                style={{ marginTop: 24 }}
+                className="mt-6"
             />
         </div>
     )

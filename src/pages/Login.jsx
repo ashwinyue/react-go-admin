@@ -116,15 +116,7 @@ const Login = () => {
          * - minHeight: 100vh：最小高度为视口高度
          * - background: 渐变背景色
          */
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                minHeight: '100vh',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            }}
-        >
+        <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-[#667eea] to-[#764ba2]">
             {/**
              * Ant Design 的 Card 组件
              * 
@@ -136,7 +128,7 @@ const Login = () => {
              */}
             <Card
                 title="管理系统登录"
-                style={{ width: 400, boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}
+                className="w-[400px] shadow-lg"
             >
                 {/**
                  * Ant Design 的 Form 组件
@@ -236,7 +228,7 @@ const Login = () => {
                  * 用于显示默认用户名和密码，
                  * 仅用于演示，生产环境中应该删除
                  */}
-                <div style={{ textAlign: 'center', color: '#999', fontSize: 12 }}>
+                <div className="text-center text-gray-500 text-xs">
                     默认账号：admin / 123456
                 </div>
             </Card>

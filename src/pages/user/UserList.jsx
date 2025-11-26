@@ -80,7 +80,7 @@ const UserList = () => {
      */
     const [loading, setLoading] = useState(false)
     const [dataSource, setDataSource] = useState([])
-    const [pagination, setPagination] = useState({ 
+    const [pagination, setPagination] = useState({
         current: 1,     // 当前页码
         pageSize: 10,   // 每页显示条数
         total: 0        // 总记录数
@@ -110,10 +110,10 @@ const UserList = () => {
         try {
             // 调用获取用户列表 API
             const data = await getUserList({ page, pageSize })
-            
+
             // 更新数据源状态
             setDataSource(data.list || [])
-            
+
             // 更新分页配置
             setPagination({
                 current: page,
@@ -218,7 +218,7 @@ const UserList = () => {
                     >
                         编辑
                     </Button>
-                    
+
                     {/* 删除确认按钮 */}
                     <Popconfirm
                         title="确定要删除这个用户吗？"
@@ -226,10 +226,10 @@ const UserList = () => {
                         okText="确定"
                         cancelText="取消"
                     >
-                        <Button 
-                            type="link" 
-                            size="small" 
-                            danger 
+                        <Button
+                            type="link"
+                            size="small"
+                            danger
                             icon={<DeleteOutlined />}
                         >
                             删除
@@ -293,10 +293,10 @@ const UserList = () => {
         try {
             // 调用删除用户 API
             await deleteUser(id)
-            
+
             // 显示成功消息
             message.success('删除成功')
-            
+
             // 重新加载当前页数据
             loadData(pagination.current, pagination.pageSize)
         } catch (error) {
@@ -335,7 +335,7 @@ const UserList = () => {
 
             // 关闭模态框
             setModalVisible(false)
-            
+
             // 重新加载当前页数据
             loadData(pagination.current, pagination.pageSize)
         } catch (error) {
@@ -358,13 +358,13 @@ const UserList = () => {
      * - 新增/编辑用户模态框
      */
     return (
-        <div style={{ padding: '24px' }}>
+        <div>
             {/* 页面标题和操作区域 */}
-            <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'space-between' }}>
-                <h1 style={{ margin: 0 }}>用户管理</h1>
-                <Button 
-                    type="primary" 
-                    icon={<PlusOutlined />} 
+            <div className="mb-4 flex justify-between items-center">
+                <h1 className="text-2xl font-bold">用户管理</h1>
+                <Button
+                    type="primary"
+                    icon={<PlusOutlined />}
                     onClick={handleAdd}
                 >
                     新增用户
@@ -393,8 +393,8 @@ const UserList = () => {
                 destroyOnClose                      // 关闭时销毁内容
             >
                 {/* 用户信息表单 */}
-                <Form 
-                    form={form} 
+                <Form
+                    form={form}
                     layout="vertical"               // 表单布局：垂直布局
                 >
                     {/* 用户名字段 */}
@@ -402,9 +402,9 @@ const UserList = () => {
                         name="username"
                         label="用户名"
                         rules={[
-                            { 
-                                required: true, 
-                                message: '请输入用户名' 
+                            {
+                                required: true,
+                                message: '请输入用户名'
                             },
                             {
                                 min: 3,
@@ -422,9 +422,9 @@ const UserList = () => {
                             name="password"
                             label="密码"
                             rules={[
-                                { 
-                                    required: true, 
-                                    message: '请输入密码' 
+                                {
+                                    required: true,
+                                    message: '请输入密码'
                                 },
                                 {
                                     min: 6,
@@ -441,9 +441,9 @@ const UserList = () => {
                         name="realname"
                         label="姓名"
                         rules={[
-                            { 
-                                required: true, 
-                                message: '请输入姓名' 
+                            {
+                                required: true,
+                                message: '请输入姓名'
                             }
                         ]}
                     >
@@ -455,13 +455,13 @@ const UserList = () => {
                         name="email"
                         label="邮箱"
                         rules={[
-                            { 
-                                required: true, 
-                                message: '请输入邮箱' 
+                            {
+                                required: true,
+                                message: '请输入邮箱'
                             },
-                            { 
-                                type: 'email', 
-                                message: '请输入有效的邮箱地址' 
+                            {
+                                type: 'email',
+                                message: '请输入有效的邮箱地址'
                             }
                         ]}
                     >

@@ -172,7 +172,7 @@ const MainLayout = () => {
      * - Outlet：渲染当前路由对应的页面组件
      */
     return (
-        <Layout style={{ minHeight: '100vh' }}>
+        <Layout className="min-h-screen">
             {/* 侧边栏 */}
             <Sider
                 trigger={null}              // 不显示默认的折叠按钮
@@ -182,33 +182,15 @@ const MainLayout = () => {
                 width={240}                // 展开时的宽度
                 collapsedWidth={80}        // 折叠时的宽度
             >
-                {/* Logo/标题区域 */}
-                <div style={{
-                    height: '64px',
-                    padding: '16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: collapsed ? 'center' : 'flex-start'
-                }}>
+                {/* Logo/标题区域 - 隐藏，因为标题已移到顶部 */}
+                <div className={`h-16 px-4 flex items-center ${collapsed ? 'justify-center' : 'justify-start'}`} style={{ background: '#001529' }}>
                     {/* 根据折叠状态显示不同内容 */}
                     {collapsed ? (
-                        <div style={{
-                            width: '32px',
-                            height: '32px',
-                            backgroundColor: '#1890ff',
-                            borderRadius: '6px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: 'white',
-                            fontWeight: 'bold'
-                        }}>
+                        <div className="w-8 h-8 rounded-md flex items-center justify-center text-white font-bold" style={{ background: '#1677ff' }}>
                             R
                         </div>
                     ) : (
-                        <Text style={{ color: 'white', fontSize: '18px', fontWeight: 'bold' }}>
-                            React管理系统
-                        </Text>
+                        <div style={{ height: '64px' }}></div>
                     )}
                 </div>
 
@@ -219,57 +201,53 @@ const MainLayout = () => {
                     selectedKeys={selectedKeys}            // 当前选中的菜单项
                     defaultOpenKeys={openKeys}            // 默认展开的菜单项
                     items={menuItems}                      // 菜单项数据
-                    style={{ border: 'none' }}             // 移除边框样式
+                    className="border-none"             // 移除边框样式
                 />
             </Sider>
 
             {/* 主要内容区域 */}
             <Layout>
                 {/* 顶部导航栏 */}
-                <Header style={{
-                    padding: '0 24px',
-                    background: '#fff',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'  // 添加轻微阴影
-                }}>
-                    {/* 左侧：折叠/展开按钮 */}
-                    <Button
-                        type="text"              // 文本样式按钮
-                        icon={collapsed ?        // 根据折叠状态显示不同图标
-                            <MenuUnfoldOutlined /> :
-                            <MenuFoldOutlined />
-                        }
-                        onClick={() => setCollapsed(!collapsed)}  // 切换折叠状态
-                        style={{ fontSize: '16px' }}
-                    />
+                <Header 
+                    className="flex items-center justify-between" 
+                    style={{ 
+                        height: '64px', 
+                        lineHeight: '64px', 
+                        padding: '0 24px',
+                        background: '#ffffff',
+                        boxShadow: '0 1px 4px rgba(0,21,41,0.08)'
+                    }}
+                >
+                    {/* 左侧：折叠按钮和系统名称 */}
+                    <div className="flex items-center">
+                        <Button
+                            type="text"
+                            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                            onClick={() => setCollapsed(!collapsed)}
+                            style={{ fontSize: '18px', width: '48px', height: '48px', color: '#001529' }}
+                        />
+                        <Text style={{ fontSize: '18px', fontWeight: 'bold', marginLeft: '16px', color: '#001529' }}>
+                            React管理系统
+                        </Text>
+                    </div>
 
                     {/* 右侧：用户信息和操作 */}
-                    {/* 用户下拉菜单 */}
                     <Dropdown
-                        menu={{ items: userMenuItems }}  // 下拉菜单项
-                        placement="bottomRight"          // 菜单位置：右下角
-                        arrow                            // 显示箭头
+                        menu={{ items: userMenuItems }}
+                        placement="bottomRight"
+                        arrow
                     >
-                        <Button type="text">
+                        <Button type="text" style={{ height: '48px' }}>
                             <Space>
                                 <Avatar size="small" icon={<UserOutlined />} />
-                                <Text>{user?.realname || user?.username || '用户'}</Text>
+                                <Text style={{ color: '#001529' }}>{user?.realname || user?.username || '用户'}</Text>
                             </Space>
                         </Button>
                     </Dropdown>
                 </Header>
 
                 {/* 页面内容区域 */}
-                <Content style={{
-                    margin: '24px',                    // 内容区域外边距
-                    padding: '24px',                   // 内容区域内边距
-                    background: '#fff',                // 白色背景
-                    borderRadius: '8px',               // 圆角边框
-                    minHeight: '280px',                // 最小高度
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'  // 阴影效果
-                }}>
+                <Content className="m-6 p-6 bg-white rounded-lg shadow-sm" style={{ minHeight: 'calc(100vh - 112px)' }}>
                     {/* Outlet 组件：渲染当前路由对应的页面组件 */}
                     {/* 当路由改变时，Outlet 会自动渲染对应的页面内容 */}
                     <Outlet />

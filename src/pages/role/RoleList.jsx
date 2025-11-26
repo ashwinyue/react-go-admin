@@ -333,8 +333,8 @@ const RoleList = () => {
     return (
         <div>
             {/* 顶部操作栏 */}
-            <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between' }}>
-                <h1>角色管理</h1>
+            <div className="mb-4 flex justify-between items-center">
+                <h1 className="text-2xl font-bold">角色管理</h1>
                 {/* 新增按钮 */}
                 <Button type="primary" icon={<PlusOutlined />} onClick={handleAdd}>
                     新增角色

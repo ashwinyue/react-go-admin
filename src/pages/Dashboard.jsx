@@ -144,7 +144,7 @@ const Dashboard = () => {
             title: '添加用户',
             description: '创建新用户账户',
             icon: <UserOutlined />,
-            color: '#1890ff',
+            color: '#1677ff',
             onClick: () => {
                 // 导航到用户创建页面
                 console.log('跳转到添加用户页面')
@@ -211,7 +211,7 @@ const Dashboard = () => {
     useEffect(() => {
         // 模拟加载状态
         setLoading(true)
-        
+
         // 模拟异步数据获取
         const timer = setTimeout(() => {
             setLoading(false)
@@ -229,7 +229,7 @@ const Dashboard = () => {
      * 包含数值、趋势和图标
      */
     const renderStatisticCard = (title, value, prefix, suffix, trend, color) => (
-        <Card hoverable style={{ height: '100%' }}>
+        <Card hoverable className="h-full">
             <Statistic
                 title={title}
                 value={value}
@@ -238,12 +238,12 @@ const Dashboard = () => {
                 valueStyle={{ color: color }}
             />
             {trend && (
-                <div style={{ marginTop: 8 }}>
+                <div className="mt-2">
                     <Text type={trend.startsWith('+') ? 'success' : 'danger'}>
                         {trend.startsWith('+') ? <ArrowUpOutlined /> : <ArrowDownOutlined />}
                         {trend}
                     </Text>
-                    <Text style={{ marginLeft: 8, fontSize: 12 }}>较昨日</Text>
+                    <Text className="ml-2 text-xs">较昨日</Text>
                 </div>
             )}
         </Card>
@@ -260,24 +260,15 @@ const Dashboard = () => {
             key={action.key}
             hoverable
             onClick={action.onClick}
-            style={{
-                height: '100%',
-                textAlign: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.3s'
-            }}
+            className="h-full text-center cursor-pointer"
         >
-            <div style={{
-                fontSize: '32px',
-                color: action.color,
-                marginBottom: '16px'
-            }}>
+            <div className="text-4xl mb-4" style={{ color: action.color }}>
                 {action.icon}
             </div>
-            <Title level={4} style={{ margin: '0 0 8px 0' }}>
+            <Title level={4} style={{ marginBottom: '8px' }}>
                 {action.title}
             </Title>
-            <Text type="secondary" style={{ fontSize: '12px' }}>
+            <Text type="secondary" className="text-xs">
                 {action.description}
             </Text>
         </Card>
@@ -291,7 +282,7 @@ const Dashboard = () => {
      */
     const renderActivityItem = (activity) => {
         const config = getActivityConfig(activity.type)
-        
+
         return (
             <List.Item key={activity.id}>
                 <List.Item.Meta
@@ -305,7 +296,7 @@ const Dashboard = () => {
                     description={
                         <Space>
                             <Text>{activity.action}</Text>
-                            <Text type="secondary" style={{ fontSize: '12px' }}>
+                            <Text type="secondary" className="text-xs">
                                 {activity.time}
                             </Text>
                         </Space>
@@ -322,10 +313,10 @@ const Dashboard = () => {
      * 包含统计卡片、快捷操作、最近活动等模块
      */
     return (
-        <div style={{ padding: '24px' }}>
+        <div>
             {/* 页面标题 */}
-            <div style={{ marginBottom: '24px' }}>
-                <Title level={2} style={{ margin: 0 }}>
+            <div className="mb-6">
+                <Title level={2}>
                     仪表盘
                 </Title>
                 <Text type="secondary">
@@ -334,7 +325,7 @@ const Dashboard = () => {
             </div>
 
             {/* 统计卡片区域 */}
-            <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+            <Row gutter={[16, 16]} className="mb-6">
                 <Col xs={24} sm={12} md={6}>
                     {renderStatisticCard(
                         '用户总数',
@@ -342,7 +333,7 @@ const Dashboard = () => {
                         <UserOutlined />,
                         '人',
                         statistics.userGrowth,
-                        '#1890ff'
+                        '#1677ff'
                     )}
                 </Col>
                 <Col xs={24} sm={12} md={6}>
@@ -378,7 +369,7 @@ const Dashboard = () => {
             </Row>
 
             {/* 快捷操作区域 */}
-            <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+            <Row gutter={[16, 16]} className="mb-6">
                 <Col span={24}>
                     <Card title="快捷操作">
                         <Row gutter={[16, 16]}>
@@ -411,31 +402,31 @@ const Dashboard = () => {
                 {/* 系统信息 */}
                 <Col xs={24} md={12}>
                     <Card title="系统信息">
-                        <div style={{ marginBottom: '16px' }}>
+                        <div className="mb-4">
                             <Text strong>系统状态：</Text>
                             <Badge status="success" text="正常运行" />
                         </div>
-                        <div style={{ marginBottom: '16px' }}>
+                        <div className="mb-4">
                             <Text strong>系统版本：</Text>
                             <Text>v1.0.0</Text>
                         </div>
-                        <div style={{ marginBottom: '16px' }}>
+                        <div className="mb-4">
                             <Text strong>最后更新：</Text>
                             <Text>2024-01-21 14:30:00</Text>
                         </div>
-                        <div style={{ marginBottom: '16px' }}>
+                        <div className="mb-4">
                             <Text strong>服务器时间：</Text>
                             <Text>{new Date().toLocaleString()}</Text>
                         </div>
                         <Divider />
                         <div>
                             <Text strong>今日日历</Text>
-                            <div style={{ marginTop: '16px' }}>
+                            <div className="mt-4">
                                 {/* 这里可以集成完整的日历组件 */}
                                 <Calendar
                                     fullscreen={false}
                                     headerRender={({ value, type, onChange, onTypeChange }) => (
-                                        <div style={{ padding: '8px' }}>
+                                        <div className="p-2">
                                             <Text strong>{value.format('YYYY年MM月')}</Text>
                                         </div>
                                     )}
